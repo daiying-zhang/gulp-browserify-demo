@@ -1,6 +1,10 @@
 #npm ignore
 node_modules
 
+#project ignore
+dev
+prd
+
 # idea ignore
 .idea/
 *.ipr
