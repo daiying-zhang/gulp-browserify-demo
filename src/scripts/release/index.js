@@ -1,5 +1,7 @@
-var a = require('./m-a');
-var b = require('./m-b');
+// index.js
+
+var a = require('../m-a');
+var b = require('../m-b');
 
 var aStr = a.getString();
 var bStr = b.getString();

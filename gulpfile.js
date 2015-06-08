@@ -12,6 +12,7 @@ var transform = require('vinyl-transform');
 
 // 常用变量
 var JS_PATH = 'src/scripts/**/index.js';
+var JS_OUT_PATH = 'src/scripts/release/*.js';
 var CSS_PATH = 'src/styles/**/*.scss';
 
 // Lint Task
@@ -28,7 +29,7 @@ gulp.task('scripts', function() {
         return b.bundle();
     });
 
-    return gulp.src(JS_PATH)
+    return gulp.src(JS_OUT_PATH)
         // 依赖管理
         .pipe(browserified)
         // 生成dev版本文件
@@ -41,9 +42,15 @@ gulp.task('scripts', function() {
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-    // gulp.watch(JS_PATH, ['lint', 'scripts']);
-    gulp.watch(["src/scripts/**/*.js", "src/styles/**/*.js"], ['lint', 'scripts']);
+    gulp.watch([
+        "src/scripts/**/*.js",
+        "src/styles/**/*.js"
+    ], ['lint', 'scripts']);
 });
 
 // Default Task
-gulp.task('default', ['lint', 'scripts', 'watch']);
+gulp.task('default', [
+    'lint',
+    'scripts',
+    'watch'
+]);

@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/daiying-zhang/gulp-browserify-demo",
   "devDependencies": {
+    "aliasify": "^1.7.2",
     "browserify": "^9.0.4",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.5.2",
