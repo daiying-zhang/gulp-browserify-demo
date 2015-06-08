@@ -1,2 +1,3 @@
-# gulp-browserify-dem
-gulp-browserify-dem
+
+# gulp-browserify-demo
+gulp-browserify-demo
