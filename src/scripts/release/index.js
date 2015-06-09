@@ -14,5 +14,7 @@
     logEle.innerHTML += 'aStr: ' + aStr + '<br/>';
     logEle.innerHTML += 'bStr: ' + bStr + '<br/>';
 
-    var bbb = require('../userList');
+    require('../userList');
+
+    require('../test');
 })();

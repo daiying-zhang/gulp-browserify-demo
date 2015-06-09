@@ -63,7 +63,7 @@ gulp.task('watch', function() {
 // Default Task
 gulp.task('default', [
     // 'space',
-    'lint',
+    //'lint',
     'scripts',
     'watch'
 ]);

@@ -23,6 +23,7 @@
   "devDependencies": {
     "aliasify": "^1.7.2",
     "browserify": "^9.0.4",
+    "browserify-css": "^0.6.1",
     "browserify-hogan": "^0.3.0",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.5.2",
@@ -36,20 +37,7 @@
   },
   "browserify": {
     "transform": [
-      [
-        "browserify-hogan",
-        {
-          "extensions": [
-            "mustache"
-          ],
-          "precompilerOptions": {
-            "knownHelpersOnly": true,
-            "knownHelpers": {
-              "myUltimateHelper": true
-            }
-          }
-        }
-      ]
+      "browserify-hogan"
     ]
   }
 }

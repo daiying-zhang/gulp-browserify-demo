@@ -1,7 +1,7 @@
 (function(){
     var userListTMPL = require('../template/userList.mustache');
     var html = userListTMPL.render({
-        data_: [
+        data: [
             {
                 name: 'zdy',
                 sex: '男'
