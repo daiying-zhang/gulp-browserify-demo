@@ -2,6 +2,6 @@
 
 module.exports = {
     getString: function(){
-        return 'm-b'
+        return 'm-b';
     }
-}
+};

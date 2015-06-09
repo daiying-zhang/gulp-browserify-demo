@@ -1,13 +1,18 @@
 // index.js
+(function(){
+    var a = require('../m-a');
+    var b = require('../m-b');
 
-var a = require('../m-a');
-var b = require('../m-b');
+    var aStr = a.getString();
+    var bStr = b.getString();
 
-var aStr = a.getString();
-var bStr = b.getString();
+    console.info('It works :).');
+    console.info('Hello: ' + aStr + '  ' + bStr);
 
-console.info('Hello: ' + aStr + '  ' + bStr);
+    var logEle = document.querySelector('#log');
 
-var logEle = document.querySelector('#log');
-logEle.innerHTML += 'aStr: ' + aStr + '<br/>';
-logEle.innerHTML += 'bStr: ' + bStr + '<br/>';
+    logEle.innerHTML += 'aStr: ' + aStr + '<br/>';
+    logEle.innerHTML += 'bStr: ' + bStr + '<br/>';
+
+    var bbb = require('../userList');
+})();

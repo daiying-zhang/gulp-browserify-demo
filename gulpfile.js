@@ -6,18 +6,25 @@ var gulp = require('gulp');
 // Include Our Plugins
 var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
 var browserify = require('browserify');
 var transform = require('vinyl-transform');
+var md5 = require('gulp-md5');
+var hogan = require('browserify-hogan');
 
 // 常用变量
 var JS_PATH = 'src/scripts/**/index.js';
 var JS_OUT_PATH = 'src/scripts/release/*.js';
 var CSS_PATH = 'src/styles/**/*.scss';
 
+// Add Space for log
+gulp.task('space', function(){
+    console.log('\n');
+    console.log('==============================================================');
+});
+
 // Lint Task
 gulp.task('lint', function(){
-    return gulp.src(JS_PATH)
+    return gulp.src('src/scripts/**/*.js')
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });
@@ -25,6 +32,7 @@ gulp.task('lint', function(){
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
     var browserified = transform(function(filename) {
+        console.log('[log] 正在处理文件:' + filename);
         var b = browserify(filename);
         return b.bundle();
     });
@@ -36,6 +44,10 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest('dev'))
         // 压缩文件
         .pipe(uglify())
+        // 添加版本号
+        .pipe(md5({
+            size: 16
+        }))
         // 生成prd版本文件
         .pipe(gulp.dest('prd'));
 });
@@ -45,11 +57,12 @@ gulp.task('watch', function() {
     gulp.watch([
         "src/scripts/**/*.js",
         "src/styles/**/*.js"
-    ], ['lint', 'scripts']);
+    ], ['space', 'lint', 'scripts']);
 });
 
 // Default Task
 gulp.task('default', [
+    // 'space',
     'lint',
     'scripts',
     'watch'
