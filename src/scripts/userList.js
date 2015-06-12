@@ -1,5 +1,5 @@
 (function(){
-    var userListTMPL = require('../template/userList.mustache');
+    var userListTMPL = require('tmpl/userList.mustache');
     var html = userListTMPL.render({
         data: [
             {
@@ -9,9 +9,13 @@
             {
                 name: '李思',
                 sex: '女'
+            },
+            {
+                name: '王五',
+                sex: '男'
             }
         ]
     });
-
+    //Test
     document.querySelector('#j-users').innerHTML = html;
 })();

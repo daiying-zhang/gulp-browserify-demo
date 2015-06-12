@@ -1,5 +1,5 @@
 (function(){
-    var testTMPL = require('../template/test.html');
+    var testTMPL = require('tmpl/test.html');
     var data = require('./data/testData');
     var html = testTMPL.render(data);
 

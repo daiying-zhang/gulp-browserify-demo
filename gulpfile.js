@@ -10,6 +10,7 @@ var browserify = require('browserify');
 var transform = require('vinyl-transform');
 var md5 = require('gulp-md5');
 var hogan = require('browserify-hogan');
+var notify = require('gulp-notify');
 
 // 常用变量
 var JS_PATH = 'src/scripts/**/index.js';
@@ -40,8 +41,11 @@ gulp.task('scripts', function() {
     return gulp.src(JS_OUT_PATH)
         // 依赖管理
         .pipe(browserified)
+        // 错误处理
+        //.on('error', errorHandel)
         // 生成dev版本文件
         .pipe(gulp.dest('dev'))
+        //.pipe(notify('dev文件生成完毕!'))
         // 压缩文件
         .pipe(uglify())
         // 添加版本号
@@ -49,7 +53,8 @@ gulp.task('scripts', function() {
             size: 16
         }))
         // 生成prd版本文件
-        .pipe(gulp.dest('prd'));
+        .pipe(gulp.dest('prd'))
+        //.pipe(notify('prd文件生成完毕!'));
 });
 
 // Watch Files For Changes
@@ -63,7 +68,12 @@ gulp.task('watch', function() {
 // Default Task
 gulp.task('default', [
     // 'space',
-    //'lint',
+    'lint',
     'scripts',
     'watch'
 ]);
+
+// function errorHandel(err){
+//     console.log('error ...', err.message);
+//     err.stream.pipe(notify(err.message))
+// }
