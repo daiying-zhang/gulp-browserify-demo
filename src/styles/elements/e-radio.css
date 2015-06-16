@@ -1,0 +1,12 @@
+input[type="checkbox"]{
+    opacity: 0;
+}
+
+input[type="checkbox"]:after{
+    display: block;
+    content: " ";
+    width: 32px;
+    height: 32px;
+    background: red;
+    border-radius: 2px;
+}

@@ -5,11 +5,24 @@
     <link rel="stylesheet" href="../../dev/styles/index.css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
-    <div class="m-todos">
-        <h2 class="hd">Todos</h2>
-        <div class="bd" id="j-todos">
-            <div class="j-add">add</div>
-            <div class="j-container"></div>
+    <div class="m-todos" id="j-todos">
+        <!-- <div class="j-add">add</div> -->
+        <h2 class="hd">
+            todos
+        </h2>
+        <div class="main">
+            <div class="bd">
+                <input type="text" id="j-text" class="input" placeholder="What needs to be done?">
+                <ul class="j-container"></ul>
+            </div>
+            <div class="ft">
+                <span id="j-count" class="count">1 item</span>
+                <span class="btn-group">
+                    <button>All</button>
+                    <button>Active</button>
+                    <button>Completed</button>
+                </span>
+            </div>
         </div>
     </div>
     <script src="../../dev/scripts/index.js" charset="utf-8"></script>

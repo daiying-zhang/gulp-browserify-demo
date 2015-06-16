@@ -1,0 +1,95 @@
+body{
+    background: #F5F5F5;
+}
+.m-todos{
+    width: 474px;
+    margin: 0 auto;
+    font-size: 22px;
+}
+
+.m-todos *{
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+}
+
+.m-todos .main{
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}
+
+.m-todos .hd{
+    font-size: 100px;
+    font-weight: 100;
+    text-align: center;
+    color: rgba(175, 47, 47, 0.15);
+}
+
+
+/* body */
+.m-todos .bd{
+
+}
+
+.m-todos .bd .input{
+    width: 474;
+    height: 33px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    padding: 30px 16px 30px 60px;
+    box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
+    border: none;
+    background: #FFFFFF;
+    outline: none;
+}
+
+.m-todos .bd .input::-webkit-input-placeholder{
+    font-style: italic;
+    font-weight: 300;
+    color: #e6e6e6;
+}
+
+.m-todos .bd .item{
+    height: 58px;
+    line-height: 58px;
+    padding: 0 20px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #ededed;
+}
+
+.m-todos .bd .item input,
+.m-todos .bd .item button{
+    vertical-align: middle;
+}
+
+.m-todos .bd .item label{
+    font-weight: 300;
+}
+
+.m-todos .bd .item .remove{
+    border: none;
+    float: right;
+    font-size: 30px;
+    margin-top: 8px;
+    background-color: transparent;
+    color: #af5b5e;
+}
+
+/* footer */
+.m-todos .ft{
+    font-size: 14px;
+    height: 44px;
+    line-height: 44px;
+    padding: 0 20px;
+    background: #FFFFFF;
+}
+
+.m-todos .ft .count{
+    margin-right: 50px;
+}
+
+.m-todos .ft button{
+    font-size: 14px;
+    border: 1px solid rgba(175, 47, 47, 0.1);
+    border-radius: 2px;
+    background-color: transparent;
+}

@@ -18,7 +18,10 @@ module.exports = {
         item && todoList.push(item);
         return todoList.length;
     },
-
+    /**
+     * 删除数据
+     * @param {Number} index
+     */
     remove: function(index){
         return todoList.splice(index, 1);
     },

@@ -1,5 +1,9 @@
 {{#list}}
-    <li data-index="{{index}}">
-        <i class="j-remove">x </i>{{title}}
+    <li class="item" data-index="{{index}}">
+        <label>
+            <input type="checkbox" name="name" value="">
+            {{title}}
+        </label>
+        <button class="j-remove remove">&times;</button>
     </li>
 {{/list}}

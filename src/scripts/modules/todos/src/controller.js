@@ -13,22 +13,25 @@ module.exports = {
         var data = this.data;
         var el = view.el;
 
-        var addBtn = el.querySelector('.j-add');
+        var input = document.querySelector('#j-text');
 
-        addBtn.addEventListener('click', function(eve){
-            eve.preventDefault();
-
-            data.add({
-                title: Math.random()
-            });
-            view.rendList(data.getData())
+        // 添加
+        input.addEventListener('keydown', function(eve){
+            if(eve.keyCode === 13){
+                eve.preventDefault();
+                data.add({
+                    title: input.value
+                });
+                input.value = "";
+                view.rendList(data.getData());
+            }
         });
 
+        // 事件代理
         el.addEventListener('click', function(eve){
-            eve.preventDefault();
-
             var tar = eve.target;
             if(tar.classList.contains('j-remove')){
+                eve.preventDefault();
                 view.removeItem(tar.parentNode.dataset.index);
             }
         });
