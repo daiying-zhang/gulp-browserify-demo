@@ -26,8 +26,12 @@ module.exports = {
         return todoList.splice(index, 1);
     },
 
-    update: function(index, obj){
-        return obj && todoList.splice(index, 1, obj);
+    get: function(index){
+        return todoList[index || 0];
+    },
+
+    set: function(index, obj){
+        return obj && todoList.splice(index || 0, 1, obj);
     },
 
     clear: function(){

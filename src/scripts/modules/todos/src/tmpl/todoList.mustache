@@ -1,7 +1,7 @@
 {{#list}}
     <li class="item" data-index="{{index}}">
         <label>
-            <input type="checkbox" name="name" value="">
+            <input data-index="{{index}}" type="checkbox" class="j-choose" name="name" value="" {{#_checked}}checked{{/_checked}}>
             {{title}}
         </label>
         <button class="j-remove remove">&times;</button>

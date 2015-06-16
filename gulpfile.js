@@ -80,8 +80,9 @@ gulp.task('styles', function () {
 // Watch Files For Changes
 gulp.task('watch', function() {
     gulp.watch([
-        "src/scripts/**/*.js",
-        "src/styles/**/*.css"
+        //"src/scripts/**/*.js",
+        //"src/styles/**/*.css"
+        "src/**/*"
     ], [
         'space',
         'lint',

@@ -63,6 +63,11 @@ body{
 
 .m-todos .bd .item label{
     font-weight: 300;
+    display: inline-block;
+    width: 400px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .m-todos .bd .item .remove{

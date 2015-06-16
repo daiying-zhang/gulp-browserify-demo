@@ -22,6 +22,10 @@ module.exports = {
 
     addItem: function(){
         console.info('addList');
+    },
+
+    updateCount: function(count){
+        this.el.querySelector('.j-count').innerHTML = (count || 0) + ' items left'
     }
 }
 
