@@ -1,6 +1,10 @@
 var todoList = [];
 
 module.exports = {
+    initialize: function(){
+        this.load();
+
+    },
     /**
      * 获取数据
      */
@@ -16,6 +20,7 @@ module.exports = {
     add: function(item, index){
         //TODO 处理index
         item && todoList.push(item);
+        this.save();
         return todoList.length;
     },
     /**
@@ -23,7 +28,9 @@ module.exports = {
      * @param {Number} index
      */
     remove: function(index){
-        return todoList.splice(index, 1);
+        var res = todoList.splice(index, 1);
+        this.save();
+        return res;
     },
 
     get: function(index){
@@ -31,10 +38,38 @@ module.exports = {
     },
 
     set: function(index, obj){
-        return obj && todoList.splice(index || 0, 1, obj);
+        var res = obj && todoList.splice(index || 0, 1, obj);
+        if(res){
+            this.save();
+        }
+        return res
     },
 
     clear: function(){
         todoList = [];
+    },
+
+    save: function(){
+        localStorage.setItem('d-todos', JSON.stringify(todoList))
+    },
+
+    load: function(){
+        var dTodos = localStorage.getItem('d-todos');
+
+        if(dTodos){
+            todoList = JSON.parse(dTodos)
+        }
+    },
+
+    getLeftCount: function(){
+        var i = 0, list = todoList, len = list.length, count = len;
+        if(len){
+            for(; i<len; i++){
+                if(list[i]._checked){
+                    count--;
+                }
+            }
+        }
+        return count;
     }
 }

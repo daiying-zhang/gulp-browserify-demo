@@ -2,6 +2,7 @@ module.exports = {
     initialize: function(id){
         this.el = document.querySelector(id);
         this.listContainer = this.el.querySelector('.j-container');
+        return this
     },
 
     rendList: function(list){
@@ -12,20 +13,24 @@ module.exports = {
         var html = tmpl.render(rendData);
 
         this.listContainer.innerHTML = html;
+        return this
     },
 
     removeItem: function(index){
         console.info('removeItem(' + index + ')');
         var item = this.listContainer.querySelector('[data-index="' + index + '"]');
         this.listContainer.removeChild(item);
+        return this
     },
 
     addItem: function(){
         console.info('addList');
+        return this
     },
 
     updateCount: function(count){
-        this.el.querySelector('.j-count').innerHTML = (count || 0) + ' items left'
+        this.el.querySelector('.j-count').innerHTML = (count || 0) + ' items left';
+        return this
     }
 }
 

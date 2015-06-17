@@ -3,11 +3,12 @@ module.exports = {
         this.view = view;
         this.data = data;
 
-        this.view.rendList(this.data.getData());
+        this.data.initialize();
+        this.leftCount = this.data.getLeftCount();
+        this.view.rendList(this.data.getData())
+                 .updateCount(this.leftCount);
 
         this.bindEvent();
-
-        this.leftCount = 0;
     },
 
     bindEvent: function(){
@@ -37,6 +38,7 @@ module.exports = {
             var tar = eve.target;
 
             if(tar.classList.contains('j-remove')){
+                // 删除
                 eve.preventDefault();
                 var index = tar.parentNode.dataset.index;
                 // 如果删除的这个没有选中，leftCount减1
@@ -48,16 +50,24 @@ module.exports = {
                 view.rendList(data.getData());
                 view.updateCount(self.leftCount);
             }else if(tar.classList.contains('j-choose')){
+                // 选择
                 var checked = tar.checked;
                 var index = tar.dataset.index;
                 var item = data.get(index);
 
                 item._checked = checked;
 
-                self.leftCount += checked ? -1 : 1
+                self.leftCount += checked ? -1 : 1;
+
+                if(checked){
+                    tar.parentNode.classList.add('completed')
+                }else{
+                    tar.parentNode.classList.remove('completed')
+                }
 
                 view.updateCount(self.leftCount);
                 console.log(item);
+                data.save();
             }
         });
     }

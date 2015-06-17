@@ -53,11 +53,10 @@ body{
 }
 
 .m-todos .bd .item{
-    height: 58px;
-    line-height: 58px;
-    padding: 0 20px;
+    padding: 10px 20px;
     background-color: #FFFFFF;
     border-bottom: 1px solid #ededed;
+    position: relative;
 }
 
 .m-todos .bd .item input,
@@ -69,18 +68,39 @@ body{
     font-weight: 300;
     display: inline-block;
     width: 400px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    position: relative;
+    /* overflow: hidden; */
+    /* white-space: nowrap; */
+    /* text-overflow: ellipsis; */
+}
+
+.m-todos .bd .item .choose{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.m-todos .bd .item .title{
+    transition: color 0.5s;
+    padding-left: 30px;
+}
+
+.m-todos .bd .item .completed .title{
+    color: #e6e6e6;
+    text-decoration: line-through;
 }
 
 .m-todos .bd .item .remove{
     border: none;
     float: right;
     font-size: 30px;
-    margin-top: 8px;
     background-color: transparent;
     color: #af5b5e;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    line-height: 16px;
 }
 
 /* footer */
@@ -90,6 +110,10 @@ body{
     line-height: 44px;
     padding: 0 20px;
     background: #FFFFFF;
+    box-shadow: 0 10px 0px -4px #f6f6f6,
+                0 11px 1px -4px rgba(0,0,0,.2),
+                0 20px 0 -8px #f6f6f6,
+                0 21px 1px -8px rgba(0,0,0,.2);
 }
 
 .m-todos .ft .count{
