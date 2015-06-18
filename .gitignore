@@ -4,6 +4,7 @@ node_modules
 #project ignore
 dev
 prd
+ver
 
 # idea ignore
 .idea/
