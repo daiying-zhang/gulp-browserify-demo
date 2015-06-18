@@ -23,6 +23,11 @@ input[type="checkbox"]:after{
 input[type="checkbox"]:checked:after{
     content: "✓";
     background: #af5b5e;
-    line-height: 20px;
+    line-height: 22px;
     font-size: 22px;
+}
+
+input[type="checkbox"].disabled:after{
+    background: #EFDADA;
+    border: #EFDADA;
 }

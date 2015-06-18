@@ -60,8 +60,10 @@ module.exports = {
                 self.leftCount += checked ? -1 : 1;
 
                 if(checked){
+                    tar.classList.add('disabled');
                     tar.parentNode.classList.add('completed')
                 }else{
+                    tar.classList.remove('disabled');
                     tar.parentNode.classList.remove('completed')
                 }
 

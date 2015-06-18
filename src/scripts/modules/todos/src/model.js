@@ -50,7 +50,8 @@ module.exports = {
     },
 
     save: function(){
-        localStorage.setItem('d-todos', JSON.stringify(todoList))
+        localStorage.setItem('d-todos', JSON.stringify(todoList));
+        return this.sync();
     },
 
     load: function(){
@@ -71,5 +72,26 @@ module.exports = {
             }
         }
         return count;
+    },
+
+    sync: function(){
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/todos/api/todos.do');
+
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 400){
+                success(xhr.responseText)
+            }
+        }
+
+        xhr.send();
+
+        function success(text){
+            var json = JSON.parse(text);
+            if(json.ret){
+                console.log(json.data);
+            }
+        }
+        return this
     }
 }
