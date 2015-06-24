@@ -24,7 +24,8 @@ module.exports = {
             if(eve.keyCode === 13){
                 eve.preventDefault();
                 data.add({
-                    title: input.value
+                    title: input.value,
+                    state: 'active'
                 });
                 input.value = "";
                 view.rendList(data.getData());
@@ -56,6 +57,7 @@ module.exports = {
                 var item = data.get(index);
 
                 item._checked = checked;
+                item.state = checked ? 'completed' : 'active'
 
                 self.leftCount += checked ? -1 : 1;
 
@@ -70,6 +72,9 @@ module.exports = {
                 view.updateCount(self.leftCount);
                 console.log(item);
                 data.save();
+            }else if(tar.tagName === 'BUTTON'){
+                console.log('filter',tar.dataset.type);
+                view.filter(tar.dataset.type)
             }
         });
     }

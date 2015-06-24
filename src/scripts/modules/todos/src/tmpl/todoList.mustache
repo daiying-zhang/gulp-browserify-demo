@@ -1,6 +1,6 @@
 {{#list}}
-    <li class="item" data-index="{{index}}">
-        <label class="{{#_checked}}completed{{/_checked}}">
+    <li class="item" data-index="{{index}}" data-state="{{state}}">
+        <label class="{{#_checked}}completed{{/_checked}}{{^_checked}}active{{/_checked}}">
             <input data-index="{{index}}" type="checkbox" class="choose {{#_checked}}disabled{{/_checked}} j-choose" name="name" value="" {{#_checked}}checked{{/_checked}}>
             <div class="title">{{title}}</div>
         </label>

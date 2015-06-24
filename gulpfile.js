@@ -16,6 +16,7 @@ var del = require('del');
 // 常用变量
 var JS_PATH = 'src/scripts/**/index.js';
 var JS_OUT_PATH = 'src/scripts/release/*.js';
+
 var CSS_PATH = 'src/styles/**/*.css';
 var CSS_OUT_PATH = 'src/styles/release/*.css';
 
@@ -81,7 +82,7 @@ gulp.task('version', function() {
                 hash + ext;
         }
     });
-    gulp.src(['dev/**/*.js', 'dev/**/*.css'])
+    gulp.src(['dev/**/*.js','dev/**/*.css'], {'base': 'dev'})
         .pipe(revAll.revision())
         .pipe(gulp.dest('prd'))
         .pipe(revAll.manifestFile())
@@ -106,12 +107,15 @@ var modRewrite = require('connect-modrewrite');
 gulp.task('connect', function() {
     connect.server({
         root: './',
-        livereload: false,
+        //livereload: false,
         middleware: function() {
             return [
                 modRewrite([
-                    // 将prd的路径指向dev
-                    '^/prd/(.*)$ /dev/$1 [L]',
+                    // 将prd的中带版本号的文件指向dev
+                    '^/prd/(.*)(_\\w+)\\.(js|css)$ /prd/$1$2.$3 [L]',
+                    '^/prd/(.*)\\.(js|css)$ /dev/$1.$2 [L]',
+                    //'/prd/(.*)(_\w+)\.(js|css)$ /dev/$1.$3 [L]',
+                    //'^/prd/(.*)\.(js|css)$ /dev/$1.$2 [L]',
                     '^/todos/api/(.*)$ /src/data/$1.json [L]'
                 ])
             ];

@@ -31,6 +31,39 @@ module.exports = {
     updateCount: function(count){
         this.el.querySelector('.j-count').innerHTML = (count || 0) + ' items left';
         return this
+    },
+
+    filter: function(type){
+        if(!type){
+            type = 'all';
+        }
+        switch (type) {
+            case 'all':
+                css(this.el.querySelectorAll('li'), 'display', 'block')
+                break;
+            case 'active':
+                css(this.el.querySelectorAll('li'), 'display', 'none')
+                css(this.el.querySelectorAll('li[data-state="active"]'), 'display', 'block')
+                break;
+            case 'completed':
+                css(this.el.querySelectorAll('li'), 'display', 'none')
+                css(this.el.querySelectorAll('li[data-state="completed"]'), 'display', 'block')
+                break;
+
+        }
+
+        var btns = this.el.querySelectorAll('button');
+        for(var i = 0, len = btns.length; i < len; i++){
+            btns[i].classList.remove('active')
+        }
+        this.el.querySelector('button[data-type="' + type + '"]').classList.add('active')
+
+
+        function css(list, key, val){
+            for(var i = 0, len = list.length; i < len; i++){
+                list[i].style[key] = val
+            }
+        }
     }
 }
 
